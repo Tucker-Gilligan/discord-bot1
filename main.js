@@ -26,7 +26,7 @@ let butterReply = [
   'Spreading the butter.....',
   "Did I tell you the joke about butter? I can't tell you, you might spread it",
 ];
-const randomQuote = () => quotes[Math.floor(Math.random() * quotes.length - 1)];
+const randomQuote = () => quotes[Math.floor(Math.random() * quotes.length)];
 const greeting = () => 'HELLO';
 const throwDice = () => ~~(Math.random() * 6) + 1;
 const passButter = () => {
@@ -71,3 +71,5 @@ client.on('message', msg => {
 });
 
 client.login(process.env.BOT_TOKEN);
+
+//
