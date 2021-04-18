@@ -7,16 +7,13 @@ const config = require('dotenv').config();
 // });
 
 const quotes = [
-  'Chase the vision, not the money; the money will end up following you. — Tony Hsieh',
+  'Chase the vision, not the money; the money will end up following you. —Tony',
   'Don’t worry about failure; you only have to be right once. — Drew Houston',
   'Ideas are commodity. Execution of them is not. — Michael Dell',
   'If you are not embarrassed by the first version of your product, you’ve launched too late. — Reid Hoffman',
   'I knew that if I failed I wouldn’t regret that, but I knew the one thing I might regret is not trying. — Jeff Bezos',
   "You can bring a horse to a river, but you can't make it drink",
   'Wherever you go, there you are.',
-  'Confucius say, he who stands on toilet, is high on pot.',
-  "What did the fisherman say on his last day at sea?..... It's been reel!",
-  "What do you call a four man rock group that doesn't play music?........ Mount Rushmore.",
 ];
 
 let butterReply = [
@@ -26,13 +23,22 @@ let butterReply = [
   'Spreading the butter.....',
   "Did I tell you the joke about butter? I can't tell you, you might spread it",
 ];
+
+const jokes = [
+  "What did the fisherman say on his last day at sea?..... It's been reel!",
+  "What do you call a four man rock group that doesn't play music?........ Mount Rushmore.",
+  'ButterBot is always online!',
+];
+
+// const message = if(user)
+
 const randomQuote = () => quotes[Math.floor(Math.random() * quotes.length)];
+const randomJoke = () => jokes[Math.floor(Math.random() * jokes.length)];
 const greeting = () => 'HELLO';
 const throwDice = () => ~~(Math.random() * 6) + 1;
 const passButter = () => {
   return butterReply[Math.floor(Math.random() * butterReply.length)];
 };
-
 client.on('ready', () => {
   console.log('Inspire Bot running');
   console.log(randomQuote());
@@ -51,10 +57,12 @@ client.on('message', msg => {
   if (
     command.includes('inspire') ||
     command.includes('quote') ||
-    command.includes('joke') ||
     command.includes('random')
   ) {
     msg.reply(randomQuote());
+  }
+  if (command.includes('joke')) {
+    msg.reply(randomJoke());
   }
   if (command === 'hello') {
     msg.reply(greeting());
